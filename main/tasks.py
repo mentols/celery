@@ -1,6 +1,4 @@
-# tasks.py
-# Импортируем созданный нами ранее экземпляр класса celery(app)
-from something.celery import app
+from celery import shared_task
 
 
 @shared_task

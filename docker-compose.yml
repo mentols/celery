@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  web:
+    restart: always
+    build: .
+    command: python manage.py runserver
+    volumes:
+      - ./:/app/
+    ports:
+      - 8000:8000
+
+  celery_worker:
+    build: .
+    command: celery -A something worker -l info
+    links:
+      - redis
+    volumes:
+      - ./:/app/
+    depends_on:
+      - web
+      - redis
+
+  redis:
+    image: redis:alpine
