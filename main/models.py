@@ -1,3 +1,6 @@
 from django.db import models
+import datetime
 
-# Create your models here.
+
+class Date(models.Model):
+    date_time = models.DateTimeField(null=True)
